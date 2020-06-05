@@ -21,6 +21,7 @@ from minet.crowdtangle.post import crowdtangle_post
 from minet.crowdtangle.posts import crowdtangle_posts
 from minet.crowdtangle.search import crowdtangle_search
 from minet.crowdtangle.summary import crowdtangle_summary
+from minet.crowdtangle.links import crowdtangle_links
 
 
 class CrowdTangleClient(object):
@@ -76,6 +77,15 @@ class CrowdTangleClient(object):
             token=self.token,
             rate_limiter_state=self.rate_limiter_state,
             terms=terms,
+            **kwargs
+        )
+
+    def links(self, link, **kwargs):
+        return crowdtangle_links(
+            self.http,
+            token=self.token,
+            rate_limiter_state=self.rate_limiter_state,
+            link=link,
             **kwargs
         )
 
